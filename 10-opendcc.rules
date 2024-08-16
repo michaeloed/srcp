@@ -1,0 +1,1 @@
+ATTRS{idVendor}=="0403", ATTRS{idProduct}=="bfd8", RUN+="/sbin/modprobe -q ftdi_sio vendor=0x0403 product=0xbfd8"

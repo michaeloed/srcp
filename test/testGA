@@ -1,0 +1,24 @@
+#!/usr/bin/expect
+
+set HOST localhost
+set PORT 4303
+set BUS 1
+set ADDR 10
+
+spawn telnet $HOST $PORT
+expect "srcpd"
+send "SET CONNECTIONMODE SRCP COMMAND\n"
+expect "202 OK CONNECTIONMODE"
+send "GO\n"
+expect "200 OK GO"
+send "INIT $BUS GA $ADDR P\n"
+expect "200 OK"
+send "SET $BUS GA $ADDR 1 1 100\n"
+expect "200 OK"
+sleep 2 
+send "SET $BUS GA $ADDR 0 1 100\n"
+expect "200 OK"
+send "TERM $BUS GA $ADDR\n"
+expect "200 OK"
+send "TERM 0 SESSION\n"
+exit

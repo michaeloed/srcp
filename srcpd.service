@@ -1,0 +1,10 @@
+[Unit]
+Description=Simple Railroad Command Protocol (SRCP) server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/srcpd
+
+[Install]
+WantedBy=multi-user.target
